@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5ecs0fnn87wm"]
+
+[ext_resource type="Script" uid="uid://dft6ljfg6gc4d" path="res://World.cs" id="1_p1v5b"]
+[ext_resource type="Environment" uid="uid://b8jfie833u52x" path="res://environment.tres" id="2_2dftf"]
+[ext_resource type="Texture2D" uid="uid://v2im3ben88ia" path="res://Res/seafloor.jpg" id="2_bcbcq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_js7pq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eu7l1"]
+albedo_texture = ExtResource("2_bcbcq")
+metallic_specular = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c6gwx"]
+
+[node name="Main" type="Node"]
+
+[node name="World" type="Node3D" parent="."]
+script = ExtResource("1_p1v5b")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 0.655769, 0.754962, 0, -0.754962, 0.655769, -0.15868, 11.6336, 4.08192)
+light_energy = 2.0
+
+[node name="Plane" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1000, 0, 0, 0, 0.245, 0, 0, 0, 1000, 0, 0, 0)
+mesh = SubResource("PlaneMesh_js7pq")
+surface_material_override/0 = SubResource("StandardMaterial3D_eu7l1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Plane"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Plane/StaticBody3D"]
+shape = SubResource("BoxShape3D_c6gwx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = ExtResource("2_2dftf")

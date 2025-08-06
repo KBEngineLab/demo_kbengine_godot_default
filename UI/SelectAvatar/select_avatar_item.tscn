@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp4y373fc6gns"]
+
+[ext_resource type="Script" uid="uid://bg2gy506nesk4" path="res://UI/SelectAvatar/SelectAvatarItem.cs" id="1_wyhcg"]
+
+[node name="SelectAvatarItem" type="Button"]
+theme_override_colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.926299, 2.5028e-06, 1.54018e-06, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+text = "姓名"
+script = ExtResource("1_wyhcg")
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

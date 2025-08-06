@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dy2kcheyxdp1n"]
+
+[ext_resource type="Script" uid="uid://ba3hs1k4ilu08" path="res://Prefab/AvatarController.cs" id="1_8wfsp"]
+[ext_resource type="Script" uid="uid://d2r0g0arau8sj" path="res://UI/head_info.gd" id="3_byxdh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c6gwx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_js7pq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1v5b"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bcbcq"]
+radius = 0.565877
+height = 1.96453
+
+[node name="PlayerCharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.837883, 0)
+script = ExtResource("1_8wfsp")
+
+[node name="PlayerModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010913, 0)
+mesh = SubResource("CapsuleMesh_c6gwx")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerModel"]
+transform = Transform3D(0.281644, 0, 0, 0, 0.281644, 0, 0, 0, 0.281644, 0, 0.388572, -0.520453)
+mesh = SubResource("BoxMesh_js7pq")
+surface_material_override/0 = SubResource("StandardMaterial3D_p1v5b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bcbcq")
+
+[node name="HeadInfo" type="Node3D" parent="."]
+script = ExtResource("3_byxdh")
+
+[node name="NameLabel" type="Label3D" parent="HeadInfo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55309, 0)
+text = "姓名"
+font_size = 40
+
+[node name="HPLabel" type="Label3D" parent="HeadInfo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24526, 0)
+text = "100/100"
+font_size = 40

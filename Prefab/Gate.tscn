@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cy8j3jwt6fjd2"]
+
+[ext_resource type="Script" uid="uid://d2r0g0arau8sj" path="res://UI/head_info.gd" id="1_i4ifo"]
+[ext_resource type="Script" uid="uid://0c88furnrac7" path="res://Prefab/ObjectController.cs" id="1_ki1bm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p1v5b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wygdx"]
+albedo_color = Color(0.254902, 0.658824, 0.203922, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08895, 0)
+mesh = SubResource("CapsuleMesh_p1v5b")
+surface_material_override/0 = SubResource("StandardMaterial3D_wygdx")
+script = ExtResource("1_ki1bm")
+
+[node name="HeadInfo" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.280024, 0)
+script = ExtResource("1_i4ifo")
+
+[node name="NameLabel" type="Label3D" parent="HeadInfo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55309, 0)
+text = "姓名"
+font_size = 40

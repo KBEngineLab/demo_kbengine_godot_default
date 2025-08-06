@@ -1,0 +1,42 @@
+﻿# Godot-specific
+.import/
+export.cfg
+export_presets.cfg
+
+# Godot 4 caches
+.godot/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor-specific
+*.editorconfig
+*.godot/tmp/*
+
+# Godot Mono (C#) specific
+.mono/
+data_*/               # 编译生成的 C# 项目输出
+*.csproj
+*.sln
+*.user
+*.pidb
+*.suo
+*.dll
+*.exe
+*.mdb
+*.pdb
+*.cache/
+*.vs/
+
+# Python virtualenv (如果有)
+venv/
+env/
+
+# Godot build artifacts (if exporting to HTML5, etc.)
+build/
+
+# VSCode or JetBrains project files
+.vscode/
+.idea/

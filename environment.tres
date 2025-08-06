@@ -1,0 +1,8 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://b8jfie833u52x"]
+
+[ext_resource type="Sky" uid="uid://ekuvasggltmf" path="res://sky.tres" id="1_0wybp"]
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 1.28
+sky = ExtResource("1_0wybp")

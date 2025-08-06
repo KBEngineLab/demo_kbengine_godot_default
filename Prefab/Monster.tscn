@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cojbiinrv52na"]
+
+[ext_resource type="Script" uid="uid://d2r0g0arau8sj" path="res://UI/head_info.gd" id="1_kuam4"]
+[ext_resource type="Script" uid="uid://boklej8sn4xav" path="res://Prefab/MonsterController.cs" id="1_uhgv7"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p1v5b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wygdx"]
+albedo_color = Color(1, 0.415686, 1, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+mesh = SubResource("CapsuleMesh_p1v5b")
+surface_material_override/0 = SubResource("StandardMaterial3D_wygdx")
+script = ExtResource("1_uhgv7")
+
+[node name="HeadInfo" type="Node3D" parent="."]
+script = ExtResource("1_kuam4")
+
+[node name="NameLabel" type="Label3D" parent="HeadInfo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55309, 0)
+text = "姓名"
+font_size = 40
+
+[node name="HPLabel" type="Label3D" parent="HeadInfo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24526, 0)
+text = "100/100"
+font_size = 40

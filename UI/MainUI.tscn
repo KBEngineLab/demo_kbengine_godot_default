@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgcrcwyx7v3ng"]
+
+[ext_resource type="Script" uid="uid://boeik4ecbu4b3" path="res://UI/MainUi.cs" id="1_xv1u1"]
+[ext_resource type="PackedScene" uid="uid://cp4y373fc6gns" path="res://UI/SelectAvatar/select_avatar_item.tscn" id="2_wwh41"]
+
+[node name="MainUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xv1u1")
+
+[node name="Login" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_vertical_guides_ = [575.0]
+
+[node name="UserNameEdit" type="LineEdit" parent="Login"]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 268.0
+offset_right = 683.0
+offset_bottom = 303.0
+text = "123123"
+placeholder_text = "请输入账号"
+
+[node name="PasswordEdit" type="LineEdit" parent="Login"]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 316.0
+offset_right = 682.0
+offset_bottom = 351.0
+text = "123123"
+placeholder_text = "请输入密码"
+
+[node name="LoginBtn" type="Button" parent="Login"]
+layout_mode = 0
+offset_left = 511.0
+offset_top = 384.0
+offset_right = 643.0
+offset_bottom = 424.0
+text = "登录"
+
+[node name="CreateAvatar" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_vertical_guides_ = [574.0]
+
+[node name="CreateAvatarNameEdit" type="LineEdit" parent="CreateAvatar"]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 291.0
+offset_right = 709.0
+offset_bottom = 327.0
+placeholder_text = "请输入角色名"
+
+[node name="CreateAvatarBtn" type="Button" parent="CreateAvatar"]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 380.0
+offset_right = 654.0
+offset_bottom = 420.0
+text = "创建角色"
+
+[node name="ReturnToSelectAvatarBtn" type="Button" parent="CreateAvatar"]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 435.0
+offset_right = 654.0
+offset_bottom = 475.0
+text = "返回"
+
+[node name="SelectAvatar" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_vertical_guides_ = [574.0]
+
+[node name="CenterContainer" type="CenterContainer" parent="SelectAvatar"]
+layout_mode = 0
+offset_left = 333.0
+offset_top = 121.0
+offset_right = 816.0
+offset_bottom = 363.0
+
+[node name="AvatarList" type="VBoxContainer" parent="SelectAvatar/CenterContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AvatarItem" parent="SelectAvatar/CenterContainer/AvatarList" instance=ExtResource("2_wwh41")]
+layout_mode = 2
+
+[node name="EnterGameBtn" type="Button" parent="SelectAvatar"]
+layout_mode = 0
+offset_left = 505.0
+offset_top = 424.0
+offset_right = 645.0
+offset_bottom = 464.0
+text = "进入游戏"
+
+[node name="GotoCreateAvatarBtn" type="Button" parent="SelectAvatar"]
+layout_mode = 0
+offset_left = 505.0
+offset_top = 474.0
+offset_right = 645.0
+offset_bottom = 514.0
+text = "创建角色"
+
+[node name="DelAvatarBtn" type="Button" parent="SelectAvatar"]
+layout_mode = 0
+offset_left = 505.0
+offset_top = 525.0
+offset_right = 645.0
+offset_bottom = 565.0
+text = "删除角色"
+
+[connection signal="button_up" from="Login/LoginBtn" to="." method="_on_login_btn_button_up"]
+[connection signal="button_up" from="CreateAvatar/CreateAvatarBtn" to="." method="_on_create_avatar_btn_button_up"]
+[connection signal="button_up" from="CreateAvatar/ReturnToSelectAvatarBtn" to="." method="_on_return_to_select_avatar_btn_button_up"]
+[connection signal="button_up" from="SelectAvatar/EnterGameBtn" to="." method="_on_enter_game_btn_button_up"]
+[connection signal="button_up" from="SelectAvatar/GotoCreateAvatarBtn" to="." method="_on_goto_create_avatar_btn_button_up"]
+[connection signal="button_up" from="SelectAvatar/DelAvatarBtn" to="." method="_on_del_avatar_btn_button_up"]

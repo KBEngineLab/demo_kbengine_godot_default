@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnh1pf4xbbnis"]
+
+[ext_resource type="Script" uid="uid://nvqlx3fa70qw" path="res://Prefab/PlayerController.cs" id="1_ec3bh"]
+[ext_resource type="Script" uid="uid://cacbl6q8lle0d" path="res://Scripts/player_character_body_3d.gd" id="2_ec3bh"]
+[ext_resource type="Script" uid="uid://d2r0g0arau8sj" path="res://UI/head_info.gd" id="3_ec3bh"]
+[ext_resource type="Script" uid="uid://cbxl558jghj21" path="res://Scripts/camera_pivot.gd" id="3_qe6vn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c6gwx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_js7pq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1v5b"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bcbcq"]
+radius = 0.565877
+height = 1.96453
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_ec3bh")
+
+[node name="PlayerCharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.837883, 0)
+script = ExtResource("2_ec3bh")
+
+[node name="PlayerModel" type="MeshInstance3D" parent="PlayerCharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010913, 0)
+mesh = SubResource("CapsuleMesh_c6gwx")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCharacterBody3D/PlayerModel"]
+transform = Transform3D(0.281644, 0, 0, 0, 0.281644, 0, 0, 0, 0.281644, 0, 0.388572, -0.520453)
+mesh = SubResource("BoxMesh_js7pq")
+surface_material_override/0 = SubResource("StandardMaterial3D_p1v5b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCharacterBody3D"]
+shape = SubResource("CapsuleShape3D_bcbcq")
+
+[node name="HeadInfo" type="Node3D" parent="PlayerCharacterBody3D"]
+script = ExtResource("3_ec3bh")
+
+[node name="NameLabel" type="Label3D" parent="PlayerCharacterBody3D/HeadInfo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55309, 0)
+text = "姓名"
+font_size = 40
+
+[node name="HPLabel" type="Label3D" parent="PlayerCharacterBody3D/HeadInfo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24526, 0)
+text = "100/100"
+font_size = 40
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.617096, 0)
+script = ExtResource("3_qe6vn")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.008)
+spring_length = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.891632, 0.452762, 0, -0.452762, 0.891632, -0.0306569, 0.629411, 0.72415)
+fov = 70.0
