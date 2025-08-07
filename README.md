@@ -27,6 +27,13 @@ start "" "%KBE_BIN_PATH%/kbcmd.exe" --clientsdk=csharp --outpath="%~dp0/kbengine
 
 将kbengine_csharp_plugins 覆盖 /kbengine_csharp_plugins
 
+
+
+# C\#工程文件生成
+
+![alt text](gitimage/img_4.png)
+
+
 # 截图：
 
 
